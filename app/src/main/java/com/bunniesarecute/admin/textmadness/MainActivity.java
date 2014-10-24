@@ -3,6 +3,7 @@ package com.bunniesarecute.admin.textmadness;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,10 +44,13 @@ public class MainActivity extends Activity {
         shareTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mTextBuilder.addTextToStringArrayList(mainEditText.getText().toString());
                 mTextBuilder.buildText();
                 mFullTextMessage = mTextBuilder.getTextFromMainEditText();
+                Log.i("extra message", mFullTextMessage);
                 Intent sendMessageIntent = new Intent(getApplicationContext(), ShareOptions.class); //new share message activity
                 sendMessageIntent.putExtra(FULL_TEXT, mFullTextMessage);
+
                 startActivity(sendMessageIntent);
             }
         });

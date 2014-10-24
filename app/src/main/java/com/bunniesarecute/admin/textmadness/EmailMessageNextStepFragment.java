@@ -30,7 +30,7 @@ public class EmailMessageNextStepFragment extends Fragment {
         emailSubject = "My MadText";
         emailAddress = "";
         Bundle bundle = this.getArguments();
-        messageToSend = bundle.getString("message");
+        messageToSend = getActivity().getIntent().getStringExtra(MainActivity.FULL_TEXT);
 
         doneButton = (Button) rootView.findViewById(R.id.done_button);
         whereToSend = (EditText) rootView.findViewById(R.id.info_enter_space);

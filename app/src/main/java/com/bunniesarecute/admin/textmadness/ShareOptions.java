@@ -1,18 +1,11 @@
 package com.bunniesarecute.admin.textmadness;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.SmsManager;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -30,10 +23,8 @@ public class ShareOptions extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_options);
-        Intent intent = getIntent();
-        messageText = intent.getStringExtra("FULL_TEXT");
-        mBundle = new Bundle();
-        mBundle.putString("message", messageText);
+
+
 
 
         mTextMessageButton = (ImageButton) findViewById(R.id.text_message_button);
@@ -73,9 +64,9 @@ public class ShareOptions extends Activity implements OnClickListener {
         switch (view.getId())
         {
             case R.id.text_message_button:
-
                 TextMessageNextStepFragment textFrag = new TextMessageNextStepFragment();
                 textFrag.setArguments(mBundle);
+                hideButtonView();
                 getFragmentManager().beginTransaction()
                         .add(R.id.container, textFrag)
                         .commit();
@@ -85,6 +76,7 @@ public class ShareOptions extends Activity implements OnClickListener {
 
                 EmailMessageNextStepFragment emailFrag = new EmailMessageNextStepFragment();
                 emailFrag.setArguments(mBundle);
+                hideButtonView();
                 getFragmentManager().beginTransaction()
                         .add(R.id.container, emailFrag)
                         .commit();
@@ -103,6 +95,13 @@ public class ShareOptions extends Activity implements OnClickListener {
 
     public void popUpVersionToast(){
         Toast.makeText(this, "Coming Soon in Version 2.Dan!", Toast.LENGTH_SHORT);
+    }
+
+    public void hideButtonView(){
+        View viewhide = findViewById(R.id.top_buttons);
+        View view2hide = findViewById(R.id.bottom_buttons);
+        viewhide.setVisibility(View.GONE);
+        view2hide.setVisibility(View.GONE);
     }
 
 /*

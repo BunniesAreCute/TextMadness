@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bunniesarecute.admin.textmadness" >
 
-    <uses-permission android:name="android.permission.send_sms" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -32,14 +32,10 @@
         <activity
 
             android:name=".ShareOptions"
-            android:label="@string/title_activity_share_options" >
+            android:label="@string/title_activity_share_options"
+            android:parentActivityName="com.bunniesarecute.admin.textmadness.MainActivity">
         </activity>
         <activity
-            android:name=".ShareOptions2"
-            android:label="@string/title_activity_share_options2" >
-            </activity>
-
-            <activity
             android:name=".WordSelect"
             android:label="@string/title_activity_word_select" >
 

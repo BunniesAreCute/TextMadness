@@ -67,7 +67,7 @@ public class WordSelectFragment extends Fragment implements DictionaryInterface 
                 POSObject thisObject = mAdapter.getItem(position);
                 String posSelected = thisObject.getpOS();
                 randomWordSelector = new Random();
-                String dirtyWord = dirtyWordList.get(randomWordSelector.nextInt(6));
+                String dirtyWord = dirtyWordList.get(randomWordSelector.nextInt(5));
                 Log.i("whatword", dirtyWord);
                 anApi.execute(posSelected, dirtyWord);
             }
