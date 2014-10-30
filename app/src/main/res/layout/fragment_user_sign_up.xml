@@ -18,7 +18,7 @@
         android:background="@drawable/generate_button"/>
 
     <Button
-        android:id="@+id/done_button"
+        android:id="@+id/done_button_user_sign_up"
         android:text="@string/done_button"
         android:background="@drawable/generate_button"
         android:textColor="@color/teal"

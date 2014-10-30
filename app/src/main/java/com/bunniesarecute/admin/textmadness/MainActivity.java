@@ -2,6 +2,7 @@ package com.bunniesarecute.admin.textmadness;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -31,6 +32,7 @@ public class MainActivity extends Activity {
     static final String FULL_TEXT = "com.bunniesarecute.admin.textmadness.mainactivity.mFullTextMessage";
     static final String RAND_FROM_MESSAGE = "com.bunniesarecute.admin.textmadness.mainactivity.mFullTextMessage";
 
+    SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
         Firebase.setAndroidContext(this);
+        mSharedPreferences = getApplicationContext().getSharedPreferences("My_Name", 0);
         mainEditText = (EditText) findViewById(R.id.edit_text);
         insertWordButton = (Button) findViewById(R.id.generate_word_button);
         insertWordButton.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +131,13 @@ public class MainActivity extends Activity {
 
     public boolean getDirtyWords() {
         return mDirtyWords;
+    }
+
+    public void optionalNewUser(){
+        if(mSharedPreferences.getString("userName", null) == null){
+            Intent newUser = new Intent(this, UserAccount.class);
+            startActivity(newUser);
+        }
     }
 
 }
