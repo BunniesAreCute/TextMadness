@@ -77,8 +77,13 @@ public class ShareOptionsFragment extends Fragment implements OnClickListener{
                 break;
 
             case R.id.twitter_button:
-                popUpVersionToast();
+                TwitterNextStepFragment twitterFrag = new TwitterNextStepFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, twitterFrag)
+                        .commit();
                 break;
+
+
         }
 
     }
