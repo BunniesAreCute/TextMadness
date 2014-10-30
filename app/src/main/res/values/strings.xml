@@ -32,6 +32,7 @@
     <string name="username_request">Please enter your Username</string>
     <string name="user_email_request">Please enter your Email</string>
     <string name="user_password_request">Please enter your Password</string>
+    <string name="userPrefName">userName</string>
 
 
 </resources>

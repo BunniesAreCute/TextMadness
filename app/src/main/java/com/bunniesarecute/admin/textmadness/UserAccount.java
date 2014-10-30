@@ -19,7 +19,7 @@ public class UserAccount extends Activity {
         setContentView(R.layout.activity_user_account);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new UserSelectionScreen())
+                    .add(R.id.container, new UserSignUp())
                     .commit();
         }
     }

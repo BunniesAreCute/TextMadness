@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,16 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link UserSignUp.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link UserSignUp#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
 public class UserSignUp extends Fragment {
 
     private EditText userNameInput;
@@ -38,7 +29,7 @@ public class UserSignUp extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_user_sign_up, container, false);
 
         userNameEntered = "";
-        mSharedPreferences = getActivity().getApplicationContext().getSharedPreferences("My_Name", 0);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         mEditor = mSharedPreferences.edit();
 
         userNameInput = (EditText) rootView.findViewById(R.id.user_name_field);
@@ -49,6 +40,7 @@ public class UserSignUp extends Fragment {
                 userNameEntered = userNameInput.getText().toString();
                 //aUser = new User(userNameEntered);
                 mEditor.putString("userName", userNameEntered);
+                mEditor.commit();
                 Intent startMain = new Intent(getActivity(), MainActivity.class);
                 startActivity(startMain);
 

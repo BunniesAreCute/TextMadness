@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,7 +41,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
         Firebase.setAndroidContext(this);
-        mSharedPreferences = getApplicationContext().getSharedPreferences("My_Name", 0);
+        //mSharedPreferences = getApplicationContext().getSharedPreferences("My_Name", 0);
+        optionalNewUser();
         mainEditText = (EditText) findViewById(R.id.edit_text);
         insertWordButton = (Button) findViewById(R.id.generate_word_button);
         insertWordButton.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +136,7 @@ public class MainActivity extends Activity {
     }
 
     public void optionalNewUser(){
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if(mSharedPreferences.getString("userName", null) == null){
             Intent newUser = new Intent(this, UserAccount.class);
             startActivity(newUser);

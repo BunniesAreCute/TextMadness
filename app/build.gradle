@@ -4,6 +4,12 @@ android {
     compileSdkVersion 20
     buildToolsVersion "21.0.1"
 
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+
     defaultConfig {
         applicationId "com.bunniesarecute.admin.textmadness"
         minSdkVersion 15
