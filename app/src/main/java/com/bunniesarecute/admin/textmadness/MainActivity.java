@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
     static final String RAND_FROM_MESSAGE = "com.bunniesarecute.admin.textmadness.mainactivity.mFullTextMessage";
 
     SharedPreferences mSharedPreferences;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
         Firebase.setAndroidContext(this);
-        //mSharedPreferences = getApplicationContext().getSharedPreferences("My_Name", 0);
+/*        Firebase ref = new Firebase("https://dazzling-heat-5107.firebaseio.com");
+        ref.setValue("string");*/
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         optionalNewUser();
+        userName = mSharedPreferences.getString("userName", null);
         mainEditText = (EditText) findViewById(R.id.edit_text);
         insertWordButton = (Button) findViewById(R.id.generate_word_button);
         insertWordButton.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +127,7 @@ public class MainActivity extends Activity {
                 mainEditText.setText(mainEditText.getText() + " " + data.getStringExtra("RANDOM_WORD"));
                 TextBuilder.addTextToStringArrayList(mainEditText.getText().toString(), code);
                 code++;
+                addMessageToFireBase(mainEditText.getText().toString());
                 mainEditText.setSelection(mainEditText.length());
             }
         }
@@ -136,11 +142,21 @@ public class MainActivity extends Activity {
     }
 
     public void optionalNewUser(){
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if(mSharedPreferences.getString("userName", null) == null){
             Intent newUser = new Intent(this, UserAccount.class);
             startActivity(newUser);
         }
     }
+
+    public void addMessageToFireBase(String message)
+    {
+        Firebase ref = new Firebase("https://dazzling-heat-5107.firebaseio.com");
+        Firebase userRef = ref.child(userName);
+        userRef.push().setValue(message);
+    }
+
+
+
+
 
 }

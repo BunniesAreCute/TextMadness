@@ -38,7 +38,7 @@ public class UserSignUp extends Fragment {
             @Override
             public void onClick(View view) {
                 userNameEntered = userNameInput.getText().toString();
-                //aUser = new User(userNameEntered);
+                aUser = new User(userNameEntered);
                 mEditor.putString("userName", userNameEntered);
                 mEditor.commit();
                 Intent startMain = new Intent(getActivity(), MainActivity.class);
