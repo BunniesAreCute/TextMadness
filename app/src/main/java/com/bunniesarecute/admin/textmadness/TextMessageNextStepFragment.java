@@ -38,6 +38,7 @@ public class TextMessageNextStepFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_share_textmessage, container, false);
         phoneNumber = "";
         messageToSend = getActivity().getIntent().getStringExtra(MainActivity.FULL_TEXT);
+        Log.d("TextMessageNextStepFragment", "messageToSend is " + messageToSend);
 
         doneButton = (Button) rootView.findViewById(R.id.done_button);
         contactLookupButton = (Button) rootView.findViewById(R.id.contact_lookup_button);

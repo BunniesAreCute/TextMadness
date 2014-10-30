@@ -1,6 +1,9 @@
 package com.bunniesarecute.admin.textmadness;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,5 +42,6 @@ public class ShareOptions extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    }
 
-}
+

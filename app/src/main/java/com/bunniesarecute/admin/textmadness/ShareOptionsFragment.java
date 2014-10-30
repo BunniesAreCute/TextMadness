@@ -73,7 +73,8 @@ public class ShareOptionsFragment extends Fragment implements OnClickListener{
                 break;
 
             case R.id.facebook_button:
-                popUpVersionToast();
+                Toast.makeText(view.getContext(), "Facebook is terrible and won't let us share your" +
+                        " message without allowing targeted ads in our app. Sorry for the inconvenience.", Toast.LENGTH_LONG).show();
                 break;
 
             case R.id.twitter_button:
