@@ -3,5 +3,6 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/teal"
     tools:context="com.bunniesarecute.admin.textmadness.UserAccount"
     tools:ignore="MergeRootFrame" />
