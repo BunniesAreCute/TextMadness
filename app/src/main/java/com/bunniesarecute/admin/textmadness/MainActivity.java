@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 
     SharedPreferences mSharedPreferences;
     String userName;
+    FireBaseMessages mFireBaseMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
         Firebase.setAndroidContext(this);
+        mFireBaseMessages = new FireBaseMessages();
 /*        Firebase ref = new Firebase("https://dazzling-heat-5107.firebaseio.com");
         ref.setValue("string");*/
 
@@ -71,6 +73,7 @@ public class MainActivity extends Activity {
                 // mTextBuilder.buildText();
                 //mFullTextMessage = mTextBuilder.getTextFromMainEditText();
                 Log.i("extra message", mFullTextMessage);
+                mFireBaseMessages.addMessageToFireBase(userName, mFullTextMessage);
                 Intent sendMessageIntent = new Intent(getApplicationContext(), ShareOptions.class); //new share message activity
                 sendMessageIntent.putExtra(FULL_TEXT, mFullTextMessage);
 
@@ -127,7 +130,7 @@ public class MainActivity extends Activity {
                 mainEditText.setText(mainEditText.getText() + " " + data.getStringExtra("RANDOM_WORD"));
                 TextBuilder.addTextToStringArrayList(mainEditText.getText().toString(), code);
                 code++;
-                addMessageToFireBase(mainEditText.getText().toString());
+
                 mainEditText.setSelection(mainEditText.length());
             }
         }
