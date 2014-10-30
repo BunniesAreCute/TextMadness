@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 
     String mFullTextMessage = "";
     String mRandomWordFromMessage = "";
-    private boolean mDirtyWords = false;
+    private static boolean mDirtyWords = false;
 
     public static final int GENERATE_RANDOM_WORD_REQUEST = 37;
 
@@ -123,7 +123,7 @@ public class MainActivity extends Activity {
         mDirtyWords = dirtyWords;
     }
 
-    public boolean getDirtyWords() {
+    public static boolean getDirtyWords() {
         return mDirtyWords;
     }
 
