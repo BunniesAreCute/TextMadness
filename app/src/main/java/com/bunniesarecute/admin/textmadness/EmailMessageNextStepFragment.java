@@ -1,6 +1,5 @@
 package com.bunniesarecute.admin.textmadness;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -15,10 +14,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.net.URI;
-import java.util.Iterator;
-import java.util.Set;
 
 public class EmailMessageNextStepFragment extends Fragment {
 
@@ -66,6 +61,7 @@ public class EmailMessageNextStepFragment extends Fragment {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.container, new ContinueOrNot())
                         .commit();
+
 
 
             }
