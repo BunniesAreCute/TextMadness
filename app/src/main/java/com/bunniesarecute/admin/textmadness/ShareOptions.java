@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 
-public class ShareOptions extends Activity  {
+public class ShareOptions extends Activity  implements OnClickListener{
 
 
 
@@ -76,7 +77,7 @@ public class ShareOptions extends Activity  {
     }
 
     public void popUpVersionToast(){
-        Toast.makeText(this, "Coming Soon in Version 2.Dan!", Toast.LENGTH_SHORT);
+        Toast.makeText(this, "Coming Soon in Version 2.Dan!", Toast.LENGTH_SHORT).show();
     }
 
 
