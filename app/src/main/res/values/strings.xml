@@ -25,7 +25,9 @@
     <string name="dirty_words">Only dirty words</string>
     <string name="family_friendly">Family Friendly</string>
     <string name="title_activity_user_account">UserAccount</string>
-    <string name="sign_up_button_text">Sign Up</string>
+    <string name="title_new_user">New Account Set-Up</string>
+    <string name="title_log_in">Returning User Log In</string>
+    <string name="sign_up_button_text">New User</string>
     <string name="log_in_button_text">Log In</string>
     <string name="username_request">Please enter your Username</string>
     <string name="user_email_request">Please enter your Email</string>
