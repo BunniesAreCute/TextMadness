@@ -17,7 +17,14 @@
         android:layout_height="wrap_content"
         android:background="@drawable/generate_button"/>
 
-    <include
-        android:layout="@layout/email_password_fields"/>
+    <Button
+        android:id="@+id/done_button"
+        android:text="@string/done_button"
+        android:background="@drawable/generate_button"
+        android:textColor="@color/teal"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

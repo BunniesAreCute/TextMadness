@@ -16,10 +16,10 @@ public class User {
 
     }
 
-    public User(String userName, String userEmail, String userPassword){
+    public User(String userName){
         this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
+/*        this.userEmail = userEmail;
+        this.userPassword = userPassword;*/
         userMessages = new ArrayList<String>();
     }
 
