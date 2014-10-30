@@ -11,6 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.firebase.client.Firebase;
+
 
 public class MainActivity extends Activity {
 
@@ -35,7 +37,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
-
+        Firebase.setAndroidContext(this);
         mainEditText = (EditText) findViewById(R.id.edit_text);
         insertWordButton = (Button) findViewById(R.id.generate_word_button);
         insertWordButton.setOnClickListener(new View.OnClickListener() {
