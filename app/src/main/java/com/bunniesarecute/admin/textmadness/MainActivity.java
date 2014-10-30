@@ -44,8 +44,7 @@ public class MainActivity extends Activity {
         setProgressBarIndeterminateVisibility(false);
         Firebase.setAndroidContext(this);
         mFireBaseMessages = new FireBaseMessages();
-/*        Firebase ref = new Firebase("https://dazzling-heat-5107.firebaseio.com");
-        ref.setValue("string");*/
+
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         optionalNewUser();
@@ -151,12 +150,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void addMessageToFireBase(String message)
-    {
-        Firebase ref = new Firebase("https://dazzling-heat-5107.firebaseio.com");
-        Firebase userRef = ref.child(userName);
-        userRef.push().setValue(message);
-    }
+
 
 
 

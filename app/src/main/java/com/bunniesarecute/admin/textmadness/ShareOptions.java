@@ -1,23 +1,26 @@
 package com.bunniesarecute.admin.textmadness;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 public class ShareOptions extends Activity {
-
-
+    FireBaseMessages mFireBaseMessages;
+    SharedPreferences mSharedPreferences;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_options);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userName = mSharedPreferences.getString("userName", null);
+        mFireBaseMessages = new FireBaseMessages();
+        mFireBaseMessages.getMessagesFromFireBase(userName);
         getFragmentManager().beginTransaction().add(R.id.container, new ShareOptionsFragment()).commit();
 
     }

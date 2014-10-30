@@ -6,12 +6,10 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by BFineRocks on 10/30/14.
@@ -22,7 +20,6 @@ public class FireBaseMessages {
     final static String FIREBASE_MESSAGE = "sentMessages";
     final static String FIREBASE_TAG = "message";
     final static ArrayList<String> messageHistory = new ArrayList<String>();
-
 
 
     public void addMessageToFireBase(String userName, String message)
@@ -39,16 +36,18 @@ public class FireBaseMessages {
         Firebase ref = new Firebase(FIREBASE_BASE_URL);
         Firebase userRef = ref.child(userName);
         Firebase messageRef = userRef.child(FIREBASE_MESSAGE);
-        Query messageQuery = messageRef.limit(10);
-        messageRef.addChildEventListener(new ChildEventListener() {
+        //Query messageQuery = messageRef.limit(10);
+       messageRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> message = (Map<String, Object>) dataSnapshot.getValue();
-                messageHistory.add(message.get(FIREBASE_TAG).toString());
-                Log.i("messageHistory", messageHistory.toString());
+                String aMessage = message.get(FIREBASE_TAG).toString();
+                messageHistory.add(aMessage);
+                Log.i("messageHistory", aMessage);
+
             }
 
-/*            @Override
+            @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
 
@@ -67,7 +66,7 @@ public class FireBaseMessages {
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
-            }*/
+            }
         });
 
     }
