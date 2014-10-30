@@ -21,6 +21,7 @@ public class ShareOptions extends Activity {
         String userName = mSharedPreferences.getString("userName", null);
         mFireBaseMessages = new FireBaseMessages();
         mFireBaseMessages.getMessagesFromFireBase(userName);
+
         getFragmentManager().beginTransaction()
                 .add(R.id.container, new ShareOptionsFragment()).commit();
 
