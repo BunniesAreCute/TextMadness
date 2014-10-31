@@ -95,6 +95,7 @@ public  class TextBuilder {
 
     public static void addRandomWordToMap(String word){
         getWordMap().put(getWordCounter(), word);
+        Log.i("word counter", getWordCounter().toString());
         Log.i("word added to map", wordMap.get(getWordCounter()));
         wordCountUp();
     }
@@ -111,7 +112,8 @@ public  class TextBuilder {
             String wordToCheck = getEditTextStrings().get(i);
             Log.i("word to check", wordToCheck);
             if(wordIsMasked(wordToCheck)){
-               wordToCheck = getRandomWordFromMap(getNextKey());
+               wordToCheck = getRandomWordFromMap(i-1);
+
                 replaceSwappedWordWithRandom(wordToCheck, i);
 
             }
