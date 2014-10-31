@@ -12,6 +12,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.firebase.client.Firebase;
 
@@ -143,5 +145,28 @@ public class MainViewPagerActivity extends FragmentActivity implements ActionBar
 
     public static boolean getDirtyWords() {
         return mDirtyWords;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nsfw:
+                setDirtyWords(true);
+                item.setChecked(true);
+                return true;
+            case R.id.sfw:
+                setDirtyWords(false);
+                item.setChecked(true);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
