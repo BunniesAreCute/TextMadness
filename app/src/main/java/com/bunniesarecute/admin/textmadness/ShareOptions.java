@@ -12,6 +12,8 @@ public class ShareOptions extends Activity {
     FireBaseMessages mFireBaseMessages;
     SharedPreferences mSharedPreferences;
 
+    public static final int SEND_EMAIL_REQUEST_CODE = 56;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,10 @@ public class ShareOptions extends Activity {
 
         getFragmentManager().beginTransaction()
                 .add(R.id.container, new ShareOptionsFragment()).commit();
+        if(EmailMessageNextStepFragment.sentEmail){
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container, new ContinueOrNot()).commit();
+        }
 
     }
 
@@ -47,6 +53,17 @@ public class ShareOptions extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    }
+
+/*    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == SEND_EMAIL_REQUEST_CODE){
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container , new ContinueOrNot())
+                    .commit();
+        }
+    }*/
+}
 
 

@@ -18,6 +18,10 @@ public class ShareOptionsFragment extends Fragment implements OnClickListener{
     private ImageButton mTwitterButton;
     private Bundle mBundle;
 
+    public static final int SEND_EMAIL_REQUEST_CODE = 58;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,6 +68,7 @@ public class ShareOptionsFragment extends Fragment implements OnClickListener{
 
             case R.id.email_button:
 
+
                 EmailMessageNextStepFragment emailFrag = new EmailMessageNextStepFragment();
 
                 getFragmentManager().beginTransaction()
@@ -93,6 +98,16 @@ public class ShareOptionsFragment extends Fragment implements OnClickListener{
         Toast.makeText(getActivity().getApplicationContext(), "Coming Soon in Version 2.Dan!", Toast.LENGTH_SHORT).show();
     }
 
+/*    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == SEND_EMAIL_REQUEST_CODE){
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container , new ContinueOrNot())
+                    .commit();
+        }
+    }*/
 
 
 }
