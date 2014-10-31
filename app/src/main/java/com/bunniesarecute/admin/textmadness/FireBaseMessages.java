@@ -1,11 +1,10 @@
 package com.bunniesarecute.admin.textmadness;
 
-import android.util.Log;
-
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,39 +36,39 @@ public class FireBaseMessages {
         Firebase ref = new Firebase(FIREBASE_BASE_URL);
         Firebase userRef = ref.child(userName);
         Firebase messageRef = userRef.child(FIREBASE_MESSAGE);
-        //Query messageQuery = messageRef.limit(10);
+        Query messageQuery = messageRef.limit(10);
 
-       messageRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Map<String, Object> message = (Map<String, Object>) dataSnapshot.getValue();
-                String aMessage = message.get(FIREBASE_TAG).toString();
-                addNewMessageToHistory(aMessage);
-                Log.i("messageHistory", getArrayListOfMessages().get(0));
+       messageQuery.addChildEventListener(new ChildEventListener() {
+           @Override
+           public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+               Map<String, Object> message = (Map<String, Object>) dataSnapshot.getValue();
+               String aMessage = message.get(FIREBASE_TAG).toString();
+               addNewMessageToHistory(aMessage);
+              
 
-            }
+           }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+           @Override
+           public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
 
-            }
+           }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+           @Override
+           public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-            }
+           }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+           @Override
+           public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-            }
+           }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
+           @Override
+           public void onCancelled(FirebaseError firebaseError) {
 
-            }
-        });
+           }
+       });
 
     }
     

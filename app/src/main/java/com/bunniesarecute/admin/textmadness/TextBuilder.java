@@ -47,13 +47,13 @@ public  class TextBuilder {
     }
 
     public static void addTextToStringArrayList(String text, int code) {
-        if(code < 1) {
+        wipeTheWordArray();
             int i;
             String[] splitText = text.split(" ");
             for (i = 0; i < splitText.length; i++) {
                 getEditTextStrings().add(splitText[i]);
             }
-        }
+
         Log.i("editText String", getEditTextStrings().toString());
     }
 
