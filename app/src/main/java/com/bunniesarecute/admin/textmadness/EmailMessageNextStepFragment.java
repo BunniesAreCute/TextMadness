@@ -58,10 +58,11 @@ public class EmailMessageNextStepFragment extends Fragment {
                 Log.d(LOG_CAT, "email messageToSend is " + messageToSend);
                 intent.putExtra(Intent.EXTRA_TEXT, messageToSend);
                 startActivity(Intent.createChooser(intent, "send email"));
-                getFragmentManager().beginTransaction()
+
+/*                getFragmentManager().beginTransaction()
                         .replace(R.id.container, new ContinueOrNot())
                         .addToBackStack("cont")
-                        .commit();
+                        .commit();*/
 
 
 

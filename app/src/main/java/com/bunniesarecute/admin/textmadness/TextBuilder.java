@@ -17,7 +17,7 @@ public  class TextBuilder {
     private  static HashMap<Integer, String> wordMap = new HashMap<Integer, String>();
     private  static ArrayList<String> listOfKeys = new ArrayList<String>();
     private  static Integer wordCounter = 0;
-    private  static Integer keysReturned = 1;
+    private  static Integer keysReturned = 0;
     private static int wordSelected;
 
 
@@ -89,8 +89,8 @@ public  class TextBuilder {
         return wordMap;
     }
 
-    public static Integer getNextKey(){
-       return getWordCounter() - getKeysReturned();
+    public static void getNextKey(){
+       keysReturned++;
     }
 
     public static void addRandomWordToMap(String word){
@@ -112,8 +112,9 @@ public  class TextBuilder {
             String wordToCheck = getEditTextStrings().get(i);
             Log.i("word to check", wordToCheck);
             if(wordIsMasked(wordToCheck)){
-               wordToCheck = getRandomWordFromMap(i-1);
 
+               wordToCheck = getRandomWordFromMap(getKeysReturned());
+               getNextKey();
                 replaceSwappedWordWithRandom(wordToCheck, i);
 
             }
