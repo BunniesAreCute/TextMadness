@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/main_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/edit_text"
+
+        android:hint="@string/type_here"
+        android:textSize="20dp"
+        android:textStyle="italic"
+
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="top"
+
+
+        android:padding="20dp"
+
+        android:background="@drawable/rounded_corners"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:id="@+id/generate_word_button"
+
+        android:text="@string/generate_word"
+        android:textColor="@color/light_teal"
+        android:textSize="20dp"
+
+        android:layout_below="@id/edit_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
+        android:padding="20dp"
+        android:layout_margin="10dp"
+
+        android:background="@drawable/generate_button"
+
+        />
+
+    <Button
+        android:id="@+id/random_word_button"
+
+        android:text="@string/rand_button"
+        android:textColor="@color/medium_teal"
+        android:textSize="20dp"
+
+        android:layout_below="@id/generate_word_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
+        android:padding="20dp"
+        android:layout_margin="10dp"
+
+        android:background="@drawable/swap_word_button"
+
+        />
+
+
+
+    <Button
+        android:id="@+id/send"
+
+        android:text="@string/send_button"
+        android:textColor="@color/teal"
+        android:textStyle="bold"
+        android:textSize="20dp"
+
+        android:layout_below="@id/random_word_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
+        android:padding="20dp"
+        android:layout_margin="10dp"
+
+        android:background="@drawable/send_button"
+        />
+
+</RelativeLayout>

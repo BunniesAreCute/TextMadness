@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
                 code++;
                 //Bundle randomBundle = new Bundle();
                 //randomBundle.putString("RAND_FROM_MESSAGE", randomWordReturned);
-                getFragmentManager().beginTransaction().add(R.id.main_activity, new SwapRandomWord()).commit();
+                //getFragmentManager().beginTransaction().add(R.id.main_activity, new SwapRandomWord()).commit();
             }
         });
     }
