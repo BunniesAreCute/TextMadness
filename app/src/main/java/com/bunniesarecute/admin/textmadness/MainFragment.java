@@ -1,5 +1,6 @@
 package com.bunniesarecute.admin.textmadness;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ public class MainFragment extends Fragment {
     Button shareTextButton;
     EditText mainEditText;
     Button randomWordButton;
+    View v;
     int code = 0;
 
     String mFullTextMessage = "";
@@ -42,7 +44,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         String message = getArguments().getString(EXTRA_MESSAGE);
-        View v = inflater.inflate(R.layout.main_fragment, container, false);
+        v = inflater.inflate(R.layout.main_fragment, container, false);
         mainEditText = (EditText) v.findViewById(R.id.edit_text);
         insertWordButton = (Button) v.findViewById(R.id.generate_word_button);
         insertWordButton.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,23 @@ public class MainFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mainEditText = (EditText) v.findViewById(R.id.edit_text);
+//        mainEditText.setText(mainEditText.getText() + " appended str");  //  Please replace me with the real thing
+        if (requestCode == GENERATE_RANDOM_WORD_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                // use random word here
+                mainEditText = (EditText) v.findViewById(R.id.edit_text);
+                mainEditText.setText(mainEditText.getText() + " " + data.getStringExtra("RANDOM_WORD"));
+                TextBuilder.addTextToStringArrayList(mainEditText.getText().toString(), code);
+                code++;
+
+                mainEditText.setSelection(mainEditText.length());
+            }
+        }
     }
 
 }
