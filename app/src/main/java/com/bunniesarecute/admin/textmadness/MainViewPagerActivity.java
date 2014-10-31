@@ -1,20 +1,29 @@
 package com.bunniesarecute.admin.textmadness;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.FragmentTransaction;
-import android.app.ActionBar.Tab;
-
 import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import com.firebase.client.Firebase;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainViewPagerActivity extends FragmentActivity implements ActionBar.TabListener {
+
+    SharedPreferences mSharedPreferences;
+    FireBaseMessages mFireBaseMessages;
+    String userName;
+    private static boolean mDirtyWords = false;
 
     String[] tabTitles = new String[] {"Mad Text", "Text History"};
     ActionBar actionBar;
@@ -26,6 +35,14 @@ public class MainViewPagerActivity extends FragmentActivity implements ActionBar
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_view_pager);
+
+        Firebase.setAndroidContext(this);
+        mFireBaseMessages = new FireBaseMessages();
+
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        optionalNewUser();
+        userName = mSharedPreferences.getString("userName", null);
 
         List<Fragment> fragments = getFragments();
 
@@ -111,5 +128,20 @@ public class MainViewPagerActivity extends FragmentActivity implements ActionBar
         public CharSequence getPageTitle(int position) {
             return tabTitles[position];
         }
+    }
+
+    public void optionalNewUser(){
+        if(mSharedPreferences.getString("userName", null) == null){
+            Intent newUser = new Intent(this, UserAccount.class);
+            startActivity(newUser);
+        }
+    }
+
+    public void setDirtyWords(boolean dirtyWords) {
+        mDirtyWords = dirtyWords;
+    }
+
+    public static boolean getDirtyWords() {
+        return mDirtyWords;
     }
 }

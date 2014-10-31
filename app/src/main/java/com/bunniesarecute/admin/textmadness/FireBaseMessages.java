@@ -9,6 +9,7 @@ import com.firebase.client.FirebaseError;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -69,5 +70,9 @@ public class FireBaseMessages {
             }
         });
 
+    }
+
+    public List<String> getArrayListOfMessages(){
+        return messageHistory;
     }
 }

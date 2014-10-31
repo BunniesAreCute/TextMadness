@@ -40,7 +40,7 @@ public class ContinueOrNot extends Fragment implements OnClickListener {
             case R.id.no_button:
                 TextBuilder.wipeTheWordArray();
                 getActivity().finish();
-                Intent goHome = new Intent(getActivity(), MainActivity.class);
+                Intent goHome = new Intent(getActivity(), MainViewPagerActivity.class);
                 startActivity(goHome);
                 break;
         }
