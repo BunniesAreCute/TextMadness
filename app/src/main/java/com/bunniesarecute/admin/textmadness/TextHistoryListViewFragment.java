@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MainFragment extends Fragment {
+public class TextHistoryListViewFragment extends Fragment {
 
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
 
-    public static final MainFragment newInstance(String message)
+    public static final TextHistoryListViewFragment newInstance(String message)
     {
-        MainFragment f = new MainFragment();
+        TextHistoryListViewFragment f = new TextHistoryListViewFragment();
         Bundle bdl = new Bundle(1);
         bdl.putString(EXTRA_MESSAGE, message);
         f.setArguments(bdl);
@@ -23,7 +23,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         String message = getArguments().getString(EXTRA_MESSAGE);
-        View v = inflater.inflate(R.layout.main_fragment, container, false);
+        View v = inflater.inflate(R.layout.text_history_listview, container, false);
 //        TextView messageTextView = (TextView)v.findViewById(R.id.textView);
 //        messageTextView.setText(message);
 

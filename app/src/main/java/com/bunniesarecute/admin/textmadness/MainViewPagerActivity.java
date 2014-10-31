@@ -67,8 +67,8 @@ public class MainViewPagerActivity extends FragmentActivity implements ActionBar
     private List<Fragment> getFragments(){
         List<Fragment> fList = new ArrayList<Fragment>();
 //
-//        fList.add(MyFragment.newInstance("Fragment 1"));
-//        fList.add(MyFragment.newInstance("Fragment 2"));
+        fList.add(MainFragment.newInstance("Fragment 1"));
+        fList.add(TextHistoryListViewFragment.newInstance("Fragment 2"));
 //        fList.add(MyFragment.newInstance("Fragment 3"));
 
         return fList;
