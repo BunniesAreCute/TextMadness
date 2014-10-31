@@ -12,11 +12,11 @@
     <string name="title_activity_word_select">WordSelect</string>
     <string name="select_share_option">Dare To Share??</string>
     <string name="title_activity_share_options">ShareOptions</string>
-    <string name="title_activity_share_options2">ShareOptions2</string>
+
     <string name="share_info_request_header1">Where do you want your message to go?</string>
     <string name="share_info_text_message">Enter a Phone Number </string>
     <string name="share_info_email_message">Enter an Email Address</string>
-    <string name ="share_info_twitter_handle">If you want to Tweet @ someone, enter their handle. If not, just press done!</string>
+    <string name="share_info_twitter_handle">If you want to Tweet @ someone, enter their handle. If not, just press done!</string>
     <string name="done_button">Done!</string>
     <string name="send_again">Would you like to send this message again?</string>
     <string name="send_again_yes">Yes</string>
@@ -24,6 +24,15 @@
     <string name="rand_button">Swap a Word</string>
     <string name="dirty_words">Only dirty words</string>
     <string name="family_friendly">Family Friendly</string>
+    <string name="title_activity_user_account">UserAccount</string>
+    <string name="title_new_user">New Account Set-Up</string>
+    <string name="title_log_in">Returning User Log In</string>
+    <string name="sign_up_button_text">New User</string>
+    <string name="log_in_button_text">Log In</string>
+    <string name="username_request">Please enter your Username</string>
+    <string name="user_email_request">Please enter your Email</string>
+    <string name="user_password_request">Please enter your Password</string>
+    <string name="userPrefName">userName</string>
 
 
 </resources>

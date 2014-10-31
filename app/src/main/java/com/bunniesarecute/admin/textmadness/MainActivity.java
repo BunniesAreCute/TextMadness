@@ -2,7 +2,9 @@ package com.bunniesarecute.admin.textmadness;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +12,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.firebase.client.Firebase;
 
 
 public class MainActivity extends Activity {
@@ -29,12 +33,22 @@ public class MainActivity extends Activity {
     static final String FULL_TEXT = "com.bunniesarecute.admin.textmadness.mainactivity.mFullTextMessage";
     static final String RAND_FROM_MESSAGE = "com.bunniesarecute.admin.textmadness.mainactivity.mFullTextMessage";
 
+    SharedPreferences mSharedPreferences;
+    String userName;
+    FireBaseMessages mFireBaseMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setProgressBarIndeterminateVisibility(false);
+        Firebase.setAndroidContext(this);
+        mFireBaseMessages = new FireBaseMessages();
+
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        optionalNewUser();
+        userName = mSharedPreferences.getString("userName", null);
         mainEditText = (EditText) findViewById(R.id.edit_text);
         insertWordButton = (Button) findViewById(R.id.generate_word_button);
         insertWordButton.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +72,7 @@ public class MainActivity extends Activity {
                 // mTextBuilder.buildText();
                 //mFullTextMessage = mTextBuilder.getTextFromMainEditText();
                 Log.i("extra message", mFullTextMessage);
+                mFireBaseMessages.addMessageToFireBase(userName, mFullTextMessage);
                 Intent sendMessageIntent = new Intent(getApplicationContext(), ShareOptions.class); //new share message activity
                 sendMessageIntent.putExtra(FULL_TEXT, mFullTextMessage);
 
@@ -114,6 +129,7 @@ public class MainActivity extends Activity {
                 mainEditText.setText(mainEditText.getText() + " " + data.getStringExtra("RANDOM_WORD"));
                 TextBuilder.addTextToStringArrayList(mainEditText.getText().toString(), code);
                 code++;
+
                 mainEditText.setSelection(mainEditText.length());
             }
         }
@@ -126,5 +142,18 @@ public class MainActivity extends Activity {
     public static boolean getDirtyWords() {
         return mDirtyWords;
     }
+
+    public void optionalNewUser(){
+        if(mSharedPreferences.getString("userName", null) == null){
+            Intent newUser = new Intent(this, UserAccount.class);
+            startActivity(newUser);
+        }
+    }
+
+
+
+
+
+
 
 }

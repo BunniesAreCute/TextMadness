@@ -3,9 +3,8 @@
     package="com.bunniesarecute.admin.textmadness" >
 
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -39,6 +38,10 @@
         <activity
             android:name=".WordSelect"
             android:label="@string/title_activity_word_select" >
+        </activity>
+        <activity
+            android:name=".UserAccount"
+            android:label="@string/title_activity_user_account" >
         </activity>
     </application>
 

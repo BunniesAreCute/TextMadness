@@ -38,6 +38,7 @@ public class ContinueOrNot extends Fragment implements OnClickListener {
                         .replace(R.id.container, new ShareOptionsFragment()).commit();
                 break;
             case R.id.no_button:
+                TextBuilder.wipeTheWordArray();
                 getActivity().finish();
                 Intent goHome = new Intent(getActivity(), MainActivity.class);
                 startActivity(goHome);
