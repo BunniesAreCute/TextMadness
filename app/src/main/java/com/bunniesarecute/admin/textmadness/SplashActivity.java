@@ -22,13 +22,17 @@ public class SplashActivity extends Activity {
         animateBunny();
 
         int secondsDelayed = 2;
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                finish();
-            }
-        }, secondsDelayed * 1000);
+//        new Handler().postDelayed(new Runnable() {
+//            public void run() {
+//                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+//                finish();
+//            }
+//        }, secondsDelayed * 1000);
+
+        startActivity(new Intent(this, MainViewPagerActivity.class));
     }
+
+
 
     private void animateBunny() {
         ImageView imageview = (ImageView)findViewById(R.id.loading_gif);
