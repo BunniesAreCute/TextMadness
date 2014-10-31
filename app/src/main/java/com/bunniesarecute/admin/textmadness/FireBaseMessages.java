@@ -38,13 +38,14 @@ public class FireBaseMessages {
         Firebase userRef = ref.child(userName);
         Firebase messageRef = userRef.child(FIREBASE_MESSAGE);
         //Query messageQuery = messageRef.limit(10);
+
        messageRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Map<String, Object> message = (Map<String, Object>) dataSnapshot.getValue();
                 String aMessage = message.get(FIREBASE_TAG).toString();
-                messageHistory.add(aMessage);
-                Log.i("messageHistory", aMessage);
+                addNewMessageToHistory(aMessage);
+                Log.i("messageHistory", getArrayListOfMessages().get(0));
 
             }
 
@@ -71,8 +72,14 @@ public class FireBaseMessages {
         });
 
     }
+    
+
+    public void addNewMessageToHistory(String message){
+        getArrayListOfMessages().add(message);
+    }
 
     public List<String> getArrayListOfMessages(){
+//        Log.i("messageList", messageHistory.get(0));
         return messageHistory;
     }
 }
