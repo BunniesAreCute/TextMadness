@@ -44,7 +44,7 @@ public class FireBaseMessages {
                Map<String, Object> message = (Map<String, Object>) dataSnapshot.getValue();
                String aMessage = message.get(FIREBASE_TAG).toString();
                addNewMessageToHistory(aMessage);
-              
+
 
            }
 
