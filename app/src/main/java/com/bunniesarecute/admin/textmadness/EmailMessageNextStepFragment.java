@@ -26,7 +26,8 @@ public class EmailMessageNextStepFragment extends Fragment {
     private final int PICK_CONTACT = 42;
     private static final int REQUEST_CONTACT = 43;
     private String LOG_CAT = "EmailMessageNextStepFragment";
-    ContinueOrNot cont = new ContinueOrNot();
+    public static boolean sentEmail = false;
+
 
     private Cursor cursor;
     private String contactID;
@@ -39,6 +40,7 @@ public class EmailMessageNextStepFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(LOG_CAT, "entered teh fragment");
         View rootView = inflater.inflate(R.layout.fragment_share_emailmessage, container, false);
+
         emailSubject = "My MadText";
         emailAddress = "";
         messageToSend = getActivity().getIntent().getStringExtra(MainActivity.FULL_TEXT);
@@ -58,11 +60,12 @@ public class EmailMessageNextStepFragment extends Fragment {
                 Log.d(LOG_CAT, "email messageToSend is " + messageToSend);
                 intent.putExtra(Intent.EXTRA_TEXT, messageToSend);
                 startActivity(Intent.createChooser(intent, "send email"));
+                sentEmail = true;
 
-/*                getFragmentManager().beginTransaction()
+                getFragmentManager().beginTransaction()
                         .replace(R.id.container, new ContinueOrNot())
                         .addToBackStack("cont")
-                        .commit();*/
+                        .commit();
 
 
 
@@ -118,6 +121,8 @@ public class EmailMessageNextStepFragment extends Fragment {
                 return;
             }
         }
+
+
 
 //        }
 }

@@ -21,11 +21,15 @@ public class ShareOptions extends Activity {
         setContentView(R.layout.share_options);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userName = mSharedPreferences.getString("userName", null);
-       mFireBaseMessages = new FireBaseMessages();
+        mFireBaseMessages = new FireBaseMessages();
         mFireBaseMessages.getMessagesFromFireBase(userName);
 
         getFragmentManager().beginTransaction()
                 .add(R.id.container, new ShareOptionsFragment()).commit();
+        if(EmailMessageNextStepFragment.sentEmail){
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container, new ContinueOrNot()).commit();
+        }
 
     }
 
