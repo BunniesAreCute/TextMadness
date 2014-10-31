@@ -60,6 +60,7 @@ public class EmailMessageNextStepFragment extends Fragment {
                 startActivity(Intent.createChooser(intent, "send email"));
                 getFragmentManager().beginTransaction()
                         .replace(R.id.container, new ContinueOrNot())
+                        .addToBackStack("cont")
                         .commit();
 
 
