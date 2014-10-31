@@ -83,6 +83,8 @@ public class ShareOptionsFragment extends Fragment implements OnClickListener{
                         .replace(R.id.container, twitterFrag)
                         .commit();
                 break;
+
+
         }
 
     }

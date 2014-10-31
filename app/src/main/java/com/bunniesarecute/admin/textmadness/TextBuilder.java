@@ -129,4 +129,9 @@ public  class TextBuilder {
         return false;
     }
 
+    public static void wipeTheWordArray()
+    {
+        getEditTextStrings().clear();
+    }
+
 }

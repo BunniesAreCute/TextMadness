@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context="com.bunniesarecute.admin.textmadness.UserAccount.UserSignUp">
+
+    <EditText
+        android:id="@+id/user_name_field"
+        android:hint="@string/username_request"
+        android:textColorHint="@color/teal"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:padding="@dimen/text_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/generate_button"/>
+
+    <Button
+        android:id="@+id/done_button_user_sign_up"
+        android:text="@string/done_button"
+        android:background="@drawable/generate_button"
+        android:textColor="@color/teal"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
